@@ -166,6 +166,8 @@ public class GestorTasques {
             try (ObjectInputStream ois = new ObjectInputStream(
                     new FileInputStream(fitxer))) {
                 llista = (List<Tasca>) ois.readObject();
+                int maxId = llista.stream().mapToInt(Tasca::getId).max().orElse(0);
+                Tasca.actualitzarIdCounter(maxId);
             } catch (IOException | ClassNotFoundException e) {
                 System.err.println("Error carregant tasques: " + e.getMessage());
                 llista = new ArrayList<>();

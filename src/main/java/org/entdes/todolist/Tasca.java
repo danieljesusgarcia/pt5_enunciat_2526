@@ -29,6 +29,12 @@ public class Tasca implements Serializable {
         this.descripcio = descripcio;
     }
 
+    public static void actualitzarIdCounter(int maxId) {
+        if (maxId > idCounter) {
+            idCounter = maxId;
+        }
+    }
+
     public int getId() {
         return id;
     }
